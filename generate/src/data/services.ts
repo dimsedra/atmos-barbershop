@@ -1,0 +1,116 @@
+import { ServiceItem } from '../types';
+
+export const SERVICES_DATA: ServiceItem[] = [
+  {
+    id: 'signature-cut',
+    title: 'ATMOS Signature Sensory Haircut',
+    subtitle: 'Pemotongan presisi geometris, cuci rambut zero-gravity & 20 menit pijat akupresur leher',
+    duration: 65,
+    price: 325000,
+    targetAudience: 'Pria & Wanita',
+    asmrIncluded: true,
+    description:
+      'Layanan unggulan ATMOS yang menggabungkan konsultasi bentuk wajah, teknik potong gunting ritmis Jepang, pencucian dengan hydro-mist aromaterapi, dan pijat akupresur leher serta pundak selama 20 menit penuh.',
+    steps: [
+      'Konsultasi struktur tulang wajah & jenis rambut',
+      'Pemotongan presisi scissor-over-comb',
+      'Pembersihan rambut di washbed zero-gravity dengan headphone audio ASMR',
+      '20 Menit pijat akupresur leher, tengkuk, & pundak',
+      'Kompres handuk uap perak birch & styling akhir',
+    ],
+    image: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'japanese-headspa',
+    title: 'Japanese Head-Spa & Scalp Detox',
+    subtitle: 'Detoksifikasi sebum kulit kepala mikro, hydro-steam bath & pijat meridian 30 menit',
+    duration: 75,
+    price: 450000,
+    targetAudience: 'Unisex',
+    asmrIncluded: true,
+    description:
+      'Terapi intensif untuk meremajakan folikel rambut dan melancarkan sirkulasi kepala yang tegang akibat stres kerja perkotaan. Menggunakan sirkulasi air hangat aromatik melingkar (hydro-loop).',
+    steps: [
+      'Diagnosa mikroskopik kesehatan kulit kepala',
+      'Eksfoliasi lembut dengan Silver Birch Elixir',
+      'Water halo circular cascade therapy selama 25 menit',
+      '30 Menit akupresur titik Baihui & meridian leher',
+      'Infusi tonic penguat akar & cold blast seal',
+    ],
+    image: 'https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'beard-architecture',
+    title: 'Precision Sculpt & Beard Architecture',
+    subtitle: 'Pembentukan garis janggut simetris, kompres minyak atsiri hangat & cukur razor halus',
+    duration: 50,
+    price: 260000,
+    targetAudience: 'Pria',
+    asmrIncluded: true,
+    description:
+      'Seni penataan janggut dan kontur rahang dengan pisau cukur tradisional berlapis perak, dipadu kompres handuk hangat rempah yang melembutkan folikel tanpa iritasi.',
+    steps: [
+      'Pemetaan proporsi rahang & kumis/janggut',
+      'Trimming geometris & gradasi kerapian',
+      'Pre-shave eucalyptus steam compression',
+      'Single-blade straight razor lining',
+      'After-shave balm dingin & pijat rileksasi dagu',
+    ],
+    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'womens-botanical',
+    title: "Women's Layering Cut & Botanical Infusion",
+    subtitle: 'Potongan tekstur modern, hair mask sutra organik & blow styling alami tanpa panas berlebih',
+    duration: 70,
+    price: 380000,
+    targetAudience: 'Wanita',
+    asmrIncluded: true,
+    description:
+      'Diformulasikan khusus untuk wanita yang menginginkan potongan bervolume, layering halus yang membingkai wajah, dilengkapi masker sutra botanical dan pijat pundak pelepas penat.',
+    steps: [
+      'Analisis densitas helai dan gerakan jatuh rambut',
+      'Teknik wet-to-dry slide cutting presisi',
+      'Pemberian masker protein sutra organik & uap nano',
+      'Pijat leher, pundak, dan pelipis 15 menit',
+      'Natural bounce blowout dengan ionic diffuser',
+    ],
+    image: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'executive-ritual',
+    title: 'Executive Decompression Ritual',
+    subtitle: 'Paket paripurna: potong rambut, scalp spa, pijat 35 menit & eye-fatigue recovery',
+    duration: 90,
+    price: 580000,
+    targetAudience: 'Unisex',
+    asmrIncluded: true,
+    description:
+      'Pengalaman dekompresi total bagi para pemimpin dan profesional sibuk. Memadukan potongan rambut terbaik, spa kulit kepala, masker mata gel pendingin, dan pijat leher-pundak 35 menit.',
+    steps: [
+      'Minuman sambutan single-origin & konsultasi',
+      'Haircut presisi atau styling penataan menyeluruh',
+      'Head-spa detoksifikasi dengan air aromatik hangat',
+      '35 Menit pijat akupresur leher, tengkuk, punggung atas',
+      'Masker mata herbal pendingin & serum anti-fatigue',
+    ],
+    image: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'express-tidy',
+    title: 'Express Acoustic Tidy & Scalp Mist',
+    subtitle: 'Perapian outline samping, tengkuk, cuci cepat & tonic hidrasi untuk waktu terbatas',
+    duration: 35,
+    price: 195000,
+    targetAudience: 'Unisex',
+    asmrIncluded: false,
+    description:
+      'Perawatan ringkas namun berkelas di sela jam kerja untuk menjaga ketajaman garis rambut dan kesegaran instan sebelum pertemuan penting.',
+    steps: [
+      'Lining & perapian taper/fade samping dan tengkuk',
+      'Cuci kilat dengan shampoo mint invigorating',
+      'Semprotan tonic kulit kepala & penataan cepat',
+    ],
+    image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80',
+  },
+];

@@ -1,0 +1,6 @@
+{
+  "name": "ATMOS Barbershop & Hair Lounge",
+  "description": "Barbershop dan hair lounge di Jabodetabek dengan layanan pangkas rambut presisi, perawatan kulit kepala, pencarian cabang terdekat, produk perawatan, dan reservasi online.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
