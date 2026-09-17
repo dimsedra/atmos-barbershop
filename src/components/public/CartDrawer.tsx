@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { X, Trash2, ShoppingBag, Check, ArrowRight } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useInventoryStore } from '@/lib/store/inventory-store';
 import { Order } from '@/types';
 
 export const CartDrawer: React.FC = () => {
@@ -16,6 +17,8 @@ export const CartDrawer: React.FC = () => {
     clearCart,
     subtotal,
   } = useCart();
+
+  const { addNewOrder } = useInventoryStore();
 
   const [recipientName, setRecipientName] = useState('');
   const [recipientPhone, setRecipientPhone] = useState('');
@@ -36,7 +39,7 @@ export const CartDrawer: React.FC = () => {
     const orderNum = `ATM-ORD-${Math.floor(1000 + Math.random() * 9000)}`;
     setCreatedOrderNumber(orderNum);
 
-    // Save to local storage for /customer/orders
+    // Save to local storage for /customer/orders and inventory store for /supply/orders
     const newOrder: Order = {
       id: `ord-${Date.now()}`,
       orderNumber: orderNum,
@@ -61,6 +64,12 @@ export const CartDrawer: React.FC = () => {
       trackingNumber: `ATM-EXP-${Math.floor(100000 + Math.random() * 900000)}`,
       createdAt: new Date().toISOString(),
     };
+
+    try {
+      addNewOrder(newOrder);
+    } catch {
+      // ignore
+    }
 
     try {
       const existing = localStorage.getItem('atmos_customer_orders');

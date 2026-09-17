@@ -5,6 +5,8 @@ import { Booking, BookingStatus, SensoryProfile } from '@/types';
 import { INITIAL_BOOKINGS, BRANCHES_DATA, CAPSTERS_DATA, SERVICES_DATA } from '@/lib/mock/data';
 
 interface CreateConciergeBookingInput {
+  id?: string;
+  bookingNumber?: string;
   customerName: string;
   customerPhone: string;
   customerEmail?: string;
@@ -17,6 +19,7 @@ interface CreateConciergeBookingInput {
   servicePrice: number;
   date: string;
   timeSlot: string;
+  status?: BookingStatus;
   sensoryProfile?: SensoryProfile;
   notes?: string;
 }
@@ -34,6 +37,7 @@ interface BookingStoreContextType {
   ) => void;
   rescheduleBooking: (bookingId: string, newDate: string, newTime: string) => void;
   createConciergeBooking: (data: CreateConciergeBookingInput) => Booking;
+  addBooking: (booking: Booking) => void;
   getBookingsByBranch: (branchId: string, date?: string) => Booking[];
   getClientHistory: (phoneOrName: string) => Booking[];
 }
@@ -507,8 +511,8 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
   const createConciergeBooking = useCallback(
     (data: CreateConciergeBookingInput): Booking => {
       const newBooking: Booking = {
-        id: `bk-concierge-${Date.now()}`,
-        bookingNumber: `ATM-VIP-${Math.floor(100000 + Math.random() * 900000)}`,
+        id: data.id || `bk-concierge-${Date.now()}`,
+        bookingNumber: data.bookingNumber || `ATM-VIP-${Math.floor(100000 + Math.random() * 900000)}`,
         customerId: `cust-${Date.now()}`,
         customerName: data.customerName,
         customerPhone: data.customerPhone,
@@ -522,7 +526,7 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
         servicePrice: data.servicePrice,
         date: data.date,
         timeSlot: data.timeSlot,
-        status: 'CONFIRMED',
+        status: data.status || 'CONFIRMED',
         sensoryProfile: data.sensoryProfile,
         notes: data.notes,
         createdAt: new Date().toISOString(),
@@ -542,6 +546,19 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
     },
     []
   );
+
+  // Directly insert booking into store
+  const addBooking = useCallback((booking: Booking) => {
+    setBookings((prev) => {
+      const updated = [booking, ...prev];
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      } catch (e) {
+        console.warn('Failed to persist booking:', e);
+      }
+      return updated;
+    });
+  }, []);
 
   // Filter bookings by branch and optional date
   const getBookingsByBranch = useCallback(
@@ -591,6 +608,7 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
       addSensoryNote,
       rescheduleBooking,
       createConciergeBooking,
+      addBooking,
       getBookingsByBranch,
       getClientHistory,
     }),
@@ -602,6 +620,7 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
       addSensoryNote,
       rescheduleBooking,
       createConciergeBooking,
+      addBooking,
       getBookingsByBranch,
       getClientHistory,
     ]

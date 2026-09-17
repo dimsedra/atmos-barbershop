@@ -28,6 +28,8 @@ interface InventoryContextType {
     courierName?: string,
     trackingNumber?: string
   ) => void;
+  addNewOrder: (order: Order) => void;
+  createOrder: (order: Order) => void;
   dispatchRequisition: (requisitionId: string) => void;
   createRequisition: (
     branchId: string,
@@ -478,6 +480,19 @@ export function InventoryProvider({ children }: { children: React.ReactNode }) {
     saveOrders(updated);
   };
 
+  // Add new order (e.g. from public shop checkout)
+  const addNewOrder = (newOrder: Order) => {
+    setOrders((prev) => {
+      const updated = [newOrder, ...prev];
+      try {
+        localStorage.setItem(STORAGE_ORDERS_KEY, JSON.stringify(updated));
+      } catch {
+        // ignore
+      }
+      return updated;
+    });
+  };
+
   // Dispatch branch requisition with FEFO stock deduction
   const dispatchRequisition = (requisitionId: string) => {
     const target = requisitions.find((r) => r.id === requisitionId);
@@ -622,6 +637,8 @@ export function InventoryProvider({ children }: { children: React.ReactNode }) {
         requisitions,
         addNewBatch,
         updateOrderStatus,
+        addNewOrder,
+        createOrder: addNewOrder,
         dispatchRequisition,
         createRequisition,
         getExpiringBatchesCount,

@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { BRANCHES_DATA, SERVICES_DATA, CAPSTERS_DATA } from '@/lib/mock/data';
 import { Booking, ServiceItem, Branch, Capster } from '@/types';
+import { useBookingStore } from '@/lib/store/booking-store';
 
 interface BookingWizardProps {
   isModal?: boolean;
@@ -61,6 +62,8 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [confirmedBooking, setConfirmedBooking] = useState<Booking | null>(null);
 
+  const { createConciergeBooking } = useBookingStore();
+
   // Synchronize initial prop updates
   useEffect(() => {
     if (initialBranchId) setSelectedBranchId(initialBranchId);
@@ -87,7 +90,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
 
     const bookingNum = `ATM-BK-${Math.floor(100000 + Math.random() * 900000)}`;
 
-    const newBooking: Booking = {
+    const newBooking = createConciergeBooking({
       id: `bk-${Date.now()}`,
       bookingNumber: bookingNum,
       customerName: guestName,
@@ -109,8 +112,7 @@ export const BookingWizard: React.FC<BookingWizardProps> = ({
         notes: `ASMR Mode: ${asmrMode} | Pijat: ${massageForce} | Kursi Hening: ${quietChair ? 'Aktif' : 'Non-aktif'}`
       },
       notes: guestNotes,
-      createdAt: new Date().toISOString(),
-    };
+    });
 
     try {
       const existing = localStorage.getItem('atmos_customer_bookings');
