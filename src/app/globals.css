@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kanvas: #F8F7F4;
+  --color-kanvas-subtle: #F0EEE9;
+  --color-kanvas-muted: #E7E4DC;
+
+  --color-grafit: #121214;
+  --color-grafit-light: #1C1C21;
+  --color-grafit-muted: #2C2C34;
+
+  --color-perak: #8E8D8A;
+  --color-perak-light: #D1CFC7;
+  --color-perak-subtle: #E8E6E1;
+
+  --color-eucalyptus: #4A6B5D;
+  --color-eucalyptus-dark: #364F44;
+  --color-eucalyptus-light: #5E8574;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-kanvas, #F8F7F4);
+    color: var(--color-grafit, #121214);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.6;
+    transform: scale(1.01);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s ease-out forwards;
+}
+
+/* Custom discreet luxury scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0E0E11;
+}
+::-webkit-scrollbar-thumb {
+  background: #2C2C34;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #454552;
+}
