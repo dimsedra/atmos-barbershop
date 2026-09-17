@@ -72,6 +72,10 @@ export default function BatchesPage() {
     ).length;
   }, [batches]);
 
+  const productMap = useMemo(() => {
+    return new Map(PRODUCTS_DATA.map((p) => [p.id, p]));
+  }, []);
+
   // Filtered batches
   const filteredBatches = useMemo(() => {
     return batches
@@ -345,9 +349,14 @@ export default function BatchesPage() {
                         </div>
                       </td>
 
-                      {/* Product Name */}
+                      {/* Product Name & Category */}
                       <td className="py-3.5 px-4">
-                        <div className="font-medium text-zinc-100">{batch.productName}</div>
+                        <div className="font-medium text-zinc-100 flex items-center gap-2">
+                          <span>{batch.productName}</span>
+                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-800/80 text-zinc-400 border border-zinc-700/50">
+                            {productMap.get(batch.productId)?.category || 'Hair Care'}
+                          </span>
+                        </div>
                         <div className="text-[10px] text-zinc-400 mt-0.5">
                           Gudang: {batch.location || 'Central Warehouse Jakarta'}
                         </div>

@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className="scroll-smooth">
-      <body className={`${plusJakartaSans.variable} ${syne.variable} antialiased bg-[#F8F7F4] text-[#121214]`}>
+      <body className={`${plusJakartaSans.variable} ${syne.variable} antialiased bg-kanvas text-grafit`}>
         <AuthProvider>
           <InventoryProvider>
             <BookingProvider>

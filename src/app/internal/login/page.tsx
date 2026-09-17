@@ -132,7 +132,7 @@ export default function InternalLoginPage() {
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="staff.senopati"
                 autoComplete="username"
-                className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900/90 border border-zinc-750 text-zinc-100 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-amber-400/60 focus:ring-1 focus:ring-amber-400/40 transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900/90 border border-zinc-700/80 text-zinc-100 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-amber-400/60 focus:ring-1 focus:ring-amber-400/40 transition-colors"
               />
             </div>
 
@@ -150,7 +150,7 @@ export default function InternalLoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 autoComplete="current-password"
-                className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900/90 border border-zinc-750 text-zinc-100 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-amber-400/60 focus:ring-1 focus:ring-amber-400/40 transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-lg bg-zinc-900/90 border border-zinc-700/80 text-zinc-100 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-amber-400/60 focus:ring-1 focus:ring-amber-400/40 transition-colors"
               />
             </div>
 
