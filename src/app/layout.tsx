@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/store/auth-context";
 import { BookingProvider } from "@/lib/store/booking-store";
+import { InventoryProvider } from "@/lib/store/inventory-store";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -31,7 +32,9 @@ export default function RootLayout({
     <html lang="id" className="scroll-smooth">
       <body className={`${plusJakartaSans.variable} ${syne.variable} antialiased bg-[#F8F7F4] text-[#121214]`}>
         <AuthProvider>
-          <BookingProvider>{children}</BookingProvider>
+          <InventoryProvider>
+            <BookingProvider>{children}</BookingProvider>
+          </InventoryProvider>
         </AuthProvider>
       </body>
     </html>
