@@ -94,8 +94,9 @@ export function findUserByRole(role: StaffRole, branchId?: string): MockStaffAcc
 export function getRoleRedirectPath(role: StaffRole): string {
   switch (role) {
     case 'BRANCH_STAFF':
-    case 'BRANCH_MANAGER':
       return '/ops/schedule';
+    case 'BRANCH_MANAGER':
+      return '/hq/overview';
     case 'WAREHOUSE_STAFF':
       return '/supply/batches';
     case 'EXECUTIVE':

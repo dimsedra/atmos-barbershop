@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useStaffAuth } from '@/lib/store/auth-context';
 import { StaffRole } from '@/types';
 
@@ -33,6 +33,7 @@ const ROLE_LABELS: Record<StaffRole, { name: string; tagClass: string }> = {
 
 export default function InternalHeader({ title, subtitle, actions }: InternalHeaderProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const { user, role, logout } = useStaffAuth();
 
   const handleLogout = () => {
@@ -41,6 +42,14 @@ export default function InternalHeader({ title, subtitle, actions }: InternalHea
   };
 
   const roleMeta = role ? ROLE_LABELS[role] : null;
+
+  const currentPortal = pathname.startsWith('/hq')
+    ? 'HQ'
+    : pathname.startsWith('/supply')
+    ? 'Supply'
+    : pathname.startsWith('/ops')
+    ? 'Ops'
+    : 'Internal';
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#0d0f12]/95 backdrop-blur border-b border-zinc-800/70 text-zinc-100">
@@ -52,7 +61,7 @@ export default function InternalHeader({ title, subtitle, actions }: InternalHea
               ATMOS
             </span>
             <span className="text-[10px] tracking-widest font-mono uppercase px-2 py-0.5 rounded bg-zinc-800/80 text-zinc-400 border border-zinc-700/50">
-              Ops
+              {currentPortal}
             </span>
           </Link>
 

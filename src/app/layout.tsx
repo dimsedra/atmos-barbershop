@@ -4,6 +4,7 @@ import "./globals.css";
 import { AuthProvider } from "@/lib/store/auth-context";
 import { BookingProvider } from "@/lib/store/booking-store";
 import { InventoryProvider } from "@/lib/store/inventory-store";
+import { FinanceProvider } from "@/lib/store/finance-store";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -33,7 +34,9 @@ export default function RootLayout({
       <body className={`${plusJakartaSans.variable} ${syne.variable} antialiased bg-[#F8F7F4] text-[#121214]`}>
         <AuthProvider>
           <InventoryProvider>
-            <BookingProvider>{children}</BookingProvider>
+            <BookingProvider>
+              <FinanceProvider>{children}</FinanceProvider>
+            </BookingProvider>
           </InventoryProvider>
         </AuthProvider>
       </body>
